@@ -1,0 +1,27 @@
+version: "3.5"
+
+x-environment: &local-ftp-environment
+  - FTP_USER=${FTP_USER:-clarity}
+  - FTP_PSSWD=${FTP_PSSWD:-clarity}
+x-volumes: &local-ftp-volumes
+  - ${FTP_FOLDER:-PWD/tmp/}:/tmp/
+
+networks:
+  clarity:
+      name: local-stack-de
+
+services:
+  ftp:
+    privileged: true
+    build: .
+    image: 913932804865.dkr.ecr.eu-central-1.amazonaws.com/clarity/data/development/local_ftp_server:latest
+    container_name: clarity-ftp
+    user: root
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment: *local-ftp-environment
+    volumes: *local-ftp-volumes
+    ports:
+      - "2121:2121"
+    networks:
+      - clarity
