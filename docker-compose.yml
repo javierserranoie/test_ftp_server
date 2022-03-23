@@ -12,7 +12,6 @@ networks:
 
 services:
   ftp:
-    privileged: true
     build: .
     image: 913932804865.dkr.ecr.eu-central-1.amazonaws.com/clarity/data/development/local_ftp_server:latest
     container_name: clarity-ftp
