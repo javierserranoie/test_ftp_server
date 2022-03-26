@@ -1,4 +1,4 @@
-# Clarity ftp server
+# Test ftp server
 
 First of all, build the container with `make build`.
 
@@ -7,8 +7,8 @@ This allows you to create an ftp server locally to test.
 By default, user and passwords are:
 
 ```
-FTP_USER = clarity
-FTP_PSSWD = clarity
+FTP_USER = admin
+FTP_PSSWD = admin
 ```
 
 ## Connecting to container
@@ -18,7 +18,7 @@ the continer is run with a network bridge to make it available from other contai
 In order to get acces from the host, you can do:
 
 ```
-curl -u clarity:clarity "ftp://$(make get_host):2121/"
+curl -u admin:admin "ftp://$(make get_host):2121/"
 ```
 
 `make get_host` will provide you with the container IP so you can directly connect to it.

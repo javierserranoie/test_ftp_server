@@ -1,4 +1,4 @@
-FROM 913932804865.dkr.ecr.eu-central-1.amazonaws.com/clarity/data/base:3.10
+FROM python:3.10-slim
 
 RUN apt-get update && apt-get -y install curl
 
@@ -7,4 +7,4 @@ WORKDIR /opt/project
 
 RUN pipenv install --system --deploy --ignore-pipfile
 
-CMD ["/bin/bash", "-c", "./entrypoint.sh"]
+CMD ["/bin/bash", "-c", "./cmd.sh"]

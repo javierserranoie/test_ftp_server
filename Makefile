@@ -1,9 +1,9 @@
 .DEFAULT_GOAL := help
 
-DOCKER_IMAGE?=913932804865.dkr.ecr.eu-central-1.amazonaws.com/clarity/data/development/local_ftp_server:latest
+DOCKER_IMAGE?=local_ftp_server:latest
 
-FTP_USER?=clarity
-FTP_PSSWD?=clarity
+FTP_USER?=admin
+FTP_PSSWD?=admin
 FTP_FOLDER?=$(PWD)/tmp/
 
 .SHELL=bash
@@ -18,7 +18,7 @@ build:  ## Build local image
 	@docker-compose build ftp
 
 .PHONY: run
-run:  ## run ftp server in ftp://localhost:2121/, serving by default: FTP_FOLDER=$pwd/tmp with user: clarity, password: clarity
+run:  ## run ftp server in ftp://localhost:2121/, serving by default: FTP_FOLDER=$pwd/tmp with user: admin, password: admin
 	@docker-compose up -d --no-build
 
 .PHONY: stop
